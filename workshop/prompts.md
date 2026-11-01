@@ -92,15 +92,15 @@ Fill in the blank (your area), then paste.
 ```text
 I chose area <A search and paging | B filters and sorting | C favorites edge cases> from workshop/steps/05-chaining.md.
 Read qa/gaps.md and the relevant paths in workshop/toolshop-openapi.3.1.json first. If my area has no row in qa/gaps.md yet, tell me which request to replay before you write anything. Brands come from GET /brands, looked up by name: never hard-code an id.
-Propose three tests for this area as a table (behaviour, which rule each one shows) and wait for my go-ahead. Then implement the two I pick, one at a time, following AGENTS.md and workshop/rules.md steps 1 and 2:
+Propose three tests for this area as a table (behaviour, which rule each one shows) and wait for my go-ahead. Then implement the one I pick, following AGENTS.md and workshop/rules.md steps 1 and 2:
 - every "nothing happened" check has a positive control,
 - every state change is read back after the call,
 - each test creates and cleans up its own data (areas A and B only read: write "cleanup: none, read-only" instead),
 - every assertion message names the business fact.
-After each test run it and show me the real output. Stop after two.
+Run it and show me the real output. Then stop: I ask for a second test only if I have time.
 ```
 
-**Check:** for each test, ask the agent: *"Show me how this test would fail if the endpoint were broken."* Then break the endpoint and see if it does.
+**Check:** for your test, ask the agent: *"Show me how this test would fail if the endpoint were broken."* Then break the endpoint and see if it does.
 
 ---
 

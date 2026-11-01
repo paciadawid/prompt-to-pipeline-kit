@@ -18,9 +18,9 @@ You build a small API test framework today: Playwright + TypeScript, against the
 | 0 Setup | `workshop/steps/00-setup.md` | green smoke test, agent knows the rules |
 | 1 API discovery | `workshop/steps/01-discovery.md` | your user, a token, five notes |
 | 2 Gap analysis | `workshop/steps/02-gaps.md` | `qa/gaps.md` |
-| 3 IDE handoff | `workshop/steps/03-handoff.md` | `.env`, host facts, `qa/test-plan.md` |
+| 3 IDE handoff | `workshop/steps/03-handoff.md` | `.env`, GitHub secrets, host facts, `qa/test-plan.md` |
 | 4 Test coding I | `workshop/steps/04-first-tests.md` | layers, a login test you trust |
-| 5 Test coding II | `workshop/steps/05-chaining.md` | a chain with cleanup, two tests of your own |
+| 5 Test coding II | `workshop/steps/05-chaining.md` | a chain with cleanup, a test of your own, a pushed pipeline |
 | 6 CI/CD debugging | `workshop/steps/06-ci.md` | a green pipeline |
 | 7 Challenge | `workshop/steps/07-challenge.md` | tests for an API you have not seen |
 | 8 Architecture review | `workshop/steps/08-review.md` | a framework you can defend |
