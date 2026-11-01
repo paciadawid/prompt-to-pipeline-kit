@@ -1,6 +1,5 @@
-// The only place that reads environment variables.
-// Functions, not constants: .env is loaded by playwright.config.ts after imports are evaluated.
-export const toolshopUrl = () => process.env.TOOLSHOP_BASE_URL ?? 'https://api.practicesoftwaretesting.com';
+// The only place that reads secrets from environment variables. The base URL stays in playwright.config.ts.
+// A function, not a constant: .env is loaded by playwright.config.ts after imports are evaluated.
 
 /** Your own Toolshop user: registered once (Postman or `npm run user:create`), kept in .env, never given a default. */
 export function credentials(): { email: string; password: string } {

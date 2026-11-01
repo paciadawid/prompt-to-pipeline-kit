@@ -6,3 +6,8 @@ playwright-report
 .env
 .env.*
 !.env.example
+.idea/
+.DS_Store
+
+# facilitator material: slides, schedule, answer keys, solution. Local only, never published.
+facilitator/

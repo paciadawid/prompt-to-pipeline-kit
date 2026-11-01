@@ -18,8 +18,4 @@ export class ProductsApi extends Api {
   brands() {
     return this.http.get('/brands').then((r) => reply<Brand[]>(r));
   }
-
-  get(id: string) {
-    return this.http.get(`/products/${id}`).then((r) => reply<Product>(r));
-  }
 }

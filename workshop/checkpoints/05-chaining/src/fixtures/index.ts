@@ -37,7 +37,7 @@ type TestFixtures = {
   account: Account;
   /** No token: catalog lookups and negative auth checks. */
   guest: Toolshop;
-  /** Logged in as this worker's own user, with a fresh token (tokens live 300 s). Cleans up after itself. */
+  /** Logged in as your own user, with a fresh token (tokens live about 300 s). Cleans up after itself. */
   shopper: Toolshop;
 };
 

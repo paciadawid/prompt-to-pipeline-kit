@@ -2,17 +2,25 @@
 
 **Goal:** the tools work, one tiny test is green, and your AI agent has seen the project.
 
-1. Get the kit: open the template link the facilitator shows, click **Use this template → Create a new repository** (private is fine), clone **your** repository and open that folder in a terminal. (Node 20.12 or newer; check with `node -v`. No GitHub account? Use *Code → Download ZIP*; you will need one in block 6.)
-2. `npm ci`, then `npm run preflight`. You want `Pre-flight OK`.
-3. `npx playwright test` shows `1 passed`. That is the smoke test: it proves the toolchain, and it checks almost nothing. You will replace it.
-4. Open the folder in your IDE with your AI agent (Copilot, Cursor, Cline, Claude Code, ...).
+1. **Get your own copy of the kit.** Open https://github.com/paciadawid/prompt-to-pipeline-kit, click **Use this template → Create a new repository** (private is fine). Then, in a terminal:
+   ```bash
+   git clone <the URL of YOUR new repository>
+   cd <its folder>
+   node -v        # 20.12 or newer
+   ```
+   No GitHub account? Use *Code → Download ZIP* for now; you need an account in block 6.
+   On Windows, use **Git Bash** (or WSL) for every command today: PowerShell does not know `cp -R` or `rm -rf`.
+2. `npm ci`, then `npm run preflight`.
+3. `npx playwright test` shows `1 passed`. That is the smoke test: it proves the tools work, and it checks almost nothing. You replace it in block 4.
+4. Open the folder in your IDE and start your AI agent (Copilot, Cursor, Cline, Claude Code, ...) in **agent mode**: it must be able to read and edit files in the project, not only chat.
    Ask: `Read AGENTS.md and workshop/rules.md and tell me in three lines what this repo is for and what you must never do. Change nothing.`
-5. Postman is installed and you are signed in (free account is fine).
-6. Choose a short nick (letters and digits). It goes into your test user's e-mail so the host owner can tell whose it is.
-7. Open `README.md` in the kit: it says where each block lives.
+   Most agents read `AGENTS.md` on their own. If yours does not, start every new chat with `Read AGENTS.md first.`
+5. Postman is installed and you are signed in (a free account is fine).
+6. Choose a short nick (letters and digits). It goes into your test user's e-mail, so the owner of the host can tell whose user it is.
+7. Skim `README.md` in the kit: it says where each block lives.
 
-**What you should see:** `Pre-flight OK` with a Node, npm and network line, then `1 passed`. If preflight prints a red line, read it: it says what is missing.
+**What you should see:** preflight prints a `PASS` line for Node, dependencies, type check and "Toolshop reachable", one `TODO` line for your user (that comes in block 1, nothing to fix now), then `Pre-flight OK`. A `FAIL` line says what is missing.
 
-**Done when:** preflight is OK, the smoke test is green, and the agent repeated the rules back correctly.
+**Done when:** preflight says OK, the smoke test is green, and the agent repeated the rules back correctly.
 
-**Stuck?** Say so now: installs are a team sport. No Postman account? Use the browsable docs at https://api.practicesoftwaretesting.com/api/documentation and a REST client of your choice for block 1.
+**Stuck?** Say so now: installs are a team sport. No Postman account? Use the browsable docs at https://api.practicesoftwaretesting.com/api/documentation and any REST client for block 1.

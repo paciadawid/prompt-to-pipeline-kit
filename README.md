@@ -20,7 +20,7 @@ You build a small API test framework today: Playwright + TypeScript, against the
 | 2 Gap analysis | `workshop/steps/02-gaps.md` | `qa/gaps.md` |
 | 3 IDE handoff | `workshop/steps/03-handoff.md` | `.env`, host facts, `qa/test-plan.md` |
 | 4 Test coding I | `workshop/steps/04-first-tests.md` | layers, a login test you trust |
-| 5 Test coding II | `workshop/steps/05-chaining.md` | a chain with cleanup, your own tests |
+| 5 Test coding II | `workshop/steps/05-chaining.md` | a chain with cleanup, two tests of your own |
 | 6 CI/CD debugging | `workshop/steps/06-ci.md` | a green pipeline |
 | 7 Challenge | `workshop/steps/07-challenge.md` | tests for an API you have not seen |
 | 8 Architecture review | `workshop/steps/08-review.md` | a framework you can defend |
@@ -36,6 +36,22 @@ npm test              # run the tests
 npm run verify        # type check
 npm run report        # open the HTML report
 ```
+
+On Windows, run the commands in **Git Bash** or WSL.
+
+## Words we use
+| Word | Means |
+|---|---|
+| **spec** | the API description we were handed (`workshop/toolshop-openapi.3.1.json`). It can be wrong. |
+| **gap** | a place where the spec and the live server disagree, proven with a real request |
+| **token** | a short-lived pass you get at login and send with every protected request |
+| **fixture** | code that prepares something for a test (a logged-in client) and tidies up after it |
+| **teardown** | the tidy-up part of a fixture; it runs even when the test fails |
+| **precondition** | what must be true before the test can say anything ("the product is not a favorite yet") |
+| **positive control** | proof that the check can see something, next to a check that sees nothing |
+| **known issue** | a bug we pin on purpose: the test asserts today's wrong answer and is tagged `@known-issue` |
+| **secret** | a value GitHub hides and hands to the pipeline (your e-mail and password) |
+| **artifact** | a file the pipeline keeps after a run (the HTML report) |
 
 ## Stuck or behind?
 `workshop/checkpoints/` has a working state for blocks 4 and 5. Say so out loud first: it is usually a two-minute fix.

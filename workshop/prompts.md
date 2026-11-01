@@ -7,7 +7,7 @@ Copy-paste prompts for your AI agent, one per block. They work in any agent that
 - If the agent invents an endpoint, a field or a status code, ask: *"Where in the spec, `qa/gaps.md` or a replayed request does that come from?"*
 - Never paste `.env`, a password or a token into the chat.
 - The agent may not edit `AGENTS.md` or `workshop/rules.md`. Those are yours; if it wants a change it should tell you.
-- A wrong password for your own user is sent **once**, with a positive control right after. Several in a row lock the account.
+- Never send a wrong password for your own user, not even once: a few failures lock the account (HTTP 423) for good. A "login is refused" test uses an e-mail that does not exist.
 
 | Prompt | Block |
 |---|---|
@@ -28,7 +28,7 @@ Copy-paste prompts for your AI agent, one per block. They work in any agent that
 Read AGENTS.md, workshop/rules.md, qa/gaps.md and workshop/toolshop-openapi.3.1.json.
 Do NOT write any code yet.
 
-Fill in qa/test-plan.md: keep its table format and IDs, replace the example rows, and propose 8 to 10 candidate tests (ID, behaviour that must hold, needs login, which rules it must show, which gap or spec line it comes from).
+Fill in qa/test-plan.md. Keep its table columns. Replace the three example rows with 8 to 10 candidate tests (ID, behaviour that must hold, needs login, which rules it must show, source: a spec path or a hunt ID from qa/gaps.md). Use AUTH-01 for "a user logs in and the token identifies them", AUTH-02 for "login is refused for an e-mail that does not exist", FAV-01 for the favorites chain, and number the rest the same way (SEARCH-01, ...).
 Cover: login and token use, favorites (add, list, remove), products search, and at least one row that pins a gap from qa/gaps.md as a known issue.
 Every row must be traceable to the spec or to qa/gaps.md. If you are unsure about a behaviour, put it under the "Questions" heading of qa/test-plan.md instead of guessing. Leave "Cut list" for me. Do not edit any other file.
 Stop after writing the plan and wait for me.
@@ -60,8 +60,8 @@ Do not add features, tests or dependencies beyond this. Stop when both pass.
 ```text
 Implement AUTH-01 from qa/test-plan.md: a user logs in, gets a bearer token, and the token identifies them.
 - src/api/users.api.ts: login(email, password), me(), logout(). The class takes an optional token in its constructor and has `withToken(token)` that returns a copy of the client with that token; protected endpoints send it as `Authorization: Bearer <token>`. No assertions in it.
-- src/fixtures/index.ts: add `users: UsersApi` to the `Toolshop` type, and a `shopper` fixture of that type that logs in as MY user (credentials from src/config) for EACH test, so the token is fresh. If the login does not return 200, throw an error that says which precondition failed. Never print the password or the token.
-- The test asserts: the business result (not just the status), that /users/me returns the e-mail we logged in with (expected value comes from our input, not from a reply), and every assertion has a message saying which fact failed.
+- src/fixtures/index.ts: add `users: UsersApi` to the `Toolshop` type. Add an `account` fixture that returns credentials() from src/config, and a `shopper` fixture of type Toolshop that logs in as MY user for EACH test, so the token is fresh. If the login does not return 200, throw an error that starts with "precondition:" and says which precondition failed. Never print the password, the token or my e-mail.
+- AUTH-01 lives in tests/auth/login.spec.ts and uses the `shopper` fixture: the fixture does the login, the test calls /users/me with that token. It asserts the business result (not just the status): /users/me returns the e-mail we logged in with. The expected value comes from our input (the `account` fixture), not from a reply. Compare the e-mails as true/false, so a failure does not print my e-mail. Every assertion has a message saying which fact failed.
 Run `npm run verify` and `npm test` and show me the real output (a type error does not fail `npm test`). Stop after AUTH-01.
 ```
 
@@ -73,8 +73,8 @@ Run `npm run verify` and `npm test` and show me the real output (a type error do
 
 ```text
 Implement the favorites chain from qa/test-plan.md: look up a product by its exact name, add it as a favorite, find it in the list, remove it, and prove it is gone.
-- src/domain/catalog.ts: productNamed(products, name), where `products` is the ProductsApi client, looks a product up by exact name through search. Product ids change when the host is reseeded, so never hard-code an id. Search can return several hits for one term: pick the exact match and throw a clear error when none is found.
-- src/api/favorites.api.ts: list(), add(productId), remove(id), get(id). No assertions in it.
+- src/domain/catalog.ts: productNamed(products, name), where `products` is the ProductsApi client, looks a product up by exact name through search. Product ids change whenever the public shop resets its data, so never hard-code an id. Search can return several hits for one term: pick the exact match and throw a clear error when none is found.
+- src/api/favorites.api.ts: list(), add(productId), remove(id), get(id). No assertions in it. Add `favorites: FavoritesApi` to the `Toolshop` type.
 - The `shopper` fixture records the favorite ids that add() returns and removes exactly those in teardown (it runs even when the test fails). Check the status of each delete (204, or 404 when the test removed it already) and throw if one failed. Do not delete "all" favorites and do not compare list sizes: other tests share the user, so compare ids.
 - The test needs: a precondition (the product is not a favorite before we start; if it is, an earlier crashed run left it behind: fail with a message that says so and how to remove it, do not delete it silently), the side effect after the add (read the list again), a check after the removal that the favorite is really gone (get returns not found AND the list no longer has it).
 Use the spec and qa/gaps.md for the status codes; where they disagree, the server's real behaviour in qa/gaps.md wins (for example a second DELETE of the same favorite).
@@ -87,17 +87,17 @@ Run the tests, show me the real output, and tell me how you know nothing is left
 
 ## 05 your own area (block 5)
 
-Fill in the two blanks, then paste.
+Fill in the blank (your area), then paste.
 
 ```text
 I chose area <A search and paging | B filters and sorting | C favorites edge cases> from workshop/steps/05-chaining.md.
 Read qa/gaps.md and the relevant paths in workshop/toolshop-openapi.3.1.json first. If my area has no row in qa/gaps.md yet, tell me which request to replay before you write anything. Brands come from GET /brands, looked up by name: never hard-code an id.
-Propose three tests for this area as a table (behaviour, which rule each one shows) and wait for my go-ahead. Then implement them, one at a time, following AGENTS.md and workshop/rules.md steps 1 and 2:
+Propose three tests for this area as a table (behaviour, which rule each one shows) and wait for my go-ahead. Then implement the two I pick, one at a time, following AGENTS.md and workshop/rules.md steps 1 and 2:
 - every "nothing happened" check has a positive control,
 - every state change is read back after the call,
 - each test creates and cleans up its own data (areas A and B only read: write "cleanup: none, read-only" instead),
 - every assertion message names the business fact.
-After each test run it and show me the real output. Stop after three.
+After each test run it and show me the real output. Stop after two.
 ```
 
 **Check:** for each test, ask the agent: *"Show me how this test would fail if the endpoint were broken."* Then break the endpoint and see if it does.

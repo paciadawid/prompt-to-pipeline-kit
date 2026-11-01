@@ -14,10 +14,6 @@ export class UsersApi extends Api {
     return this.http.get('/users/me', { headers: this.auth() }).then((r) => reply<User>(r));
   }
 
-  refresh() {
-    return this.http.get('/users/refresh', { headers: this.auth() }).then((r) => reply<Token>(r));
-  }
-
   logout() {
     return this.http.get('/users/logout', { headers: this.auth() }).then((r) => reply<{ message: string }>(r));
   }

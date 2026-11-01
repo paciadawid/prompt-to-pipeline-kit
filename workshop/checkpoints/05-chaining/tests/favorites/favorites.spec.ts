@@ -13,6 +13,7 @@ async function notAFavorite(shopper: Toolshop, productId: string) {
 }
 
 // Tests in parallel share one user, so each test owns a different product.
+// The first test is the chain from prompt 04; the other two are area C (favorites edge cases).
 test.describe('favorites', () => {
   test('a favorite can be added, is listed with its product, and is gone after removal', async ({ shopper }) => {
     const spanner = await productNamed(shopper.products, 'Angled Spanner');

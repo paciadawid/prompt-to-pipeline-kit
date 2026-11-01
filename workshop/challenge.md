@@ -1,6 +1,6 @@
 # The challenge: an API you have not seen
 
-Everything from the day, once more, on your own. There is no card to lead you: **explore, find gaps, plan, code, prove it can fail**. Work alone or in pairs.
+Everything from the day, once more, on your own. No step-by-step card this time: **explore, find gaps, plan, code, prove it can fail**. Work alone or in pairs.
 
 ## Pick a tier
 
@@ -14,16 +14,16 @@ If you finish early: do the other tier, or bring a public API from your own work
 ## The rules of the challenge
 1. You may use any AI help and the prompts in `workshop/prompts.md` (start with prompt 07).
 2. Nothing counts that you have not run. Show real output.
-3. Same layout as the rest of your project: new area, new `src/api/<name>.api.ts` and `tests/<name>/`. A second host is easiest as a **Playwright project** with its own `baseURL` (see the hints). Keep one gaps file per API: `qa/pokeapi-gaps.md`, `qa/cart-gaps.md`.
+3. Same layout as the rest of your project: a new `src/api/<name>.api.ts` and a new `tests/<name>/` (for example `tests/pokeapi/`, `tests/cart/`). A second host is easiest as a second **Playwright project**: a named group of tests with its own settings, such as its own `baseURL` (see the hints). Keep one gaps file per API: `qa/pokeapi-gaps.md`, `qa/cart-gaps.md`.
 4. Cleanup: anything you create, you remove in a fixture, and the fixture checks that the removal worked.
 5. Time box: about 50 minutes. 10 explore, 10 plan, 20 code, 10 break and score. **One tier, three or four tests.** Tier A is quicker; start there if this is your first API. More time? Add tests, or take the other tier.
 
 ## Hints (read only when you are stuck)
-- *A second project:* give **both** projects a `testMatch` or `testIgnore`, or the Toolshop tests run against Pokémon (404s) and the other way round. Check with `npx playwright test --list`.
+- *A second project:* in `playwright.config.ts`, give **both** projects a `testMatch` or `testIgnore`, or the Toolshop tests run against Pokémon (404s) and the other way round. Check with `npx playwright test --list`. The patterns are relative to the `tests/` folder.
   ```ts
   projects: [
-    { name: 'toolshop', testIgnore: '**/tests/pokemon/**' },
-    { name: 'pokeapi', testMatch: '**/tests/pokemon/**', use: { baseURL: 'https://pokeapi.co/api/v2/' } },
+    { name: 'toolshop', testIgnore: 'pokeapi/**' },
+    { name: 'pokeapi', testMatch: 'pokeapi/**/*.spec.ts', use: { baseURL: 'https://pokeapi.co/api/v2/' } },
   ],
   ```
 - *PokeAPI base URL:* if `baseURL` is `https://pokeapi.co/api/v2/`, keep the trailing slash and request paths WITHOUT a leading slash (`pokemon/eevee`), or the `/api/v2` part is dropped.

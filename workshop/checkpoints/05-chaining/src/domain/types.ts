@@ -17,7 +17,5 @@ export type Product = {
   category: { id: string; name: string };
 };
 
-
-
 export type Favorite = { id: string; user_id: string; product_id: string; product?: Product };
 

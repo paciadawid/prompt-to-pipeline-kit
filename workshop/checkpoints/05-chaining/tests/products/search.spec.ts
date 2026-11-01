@@ -1,6 +1,6 @@
 import { test, expect } from '../../src/fixtures';
 
-// Catalog reads need no login: these run for everyone, with no account.
+// Area A. Catalog reads need no login, and they are read-only, so cleanup: none.
 test.describe('products', () => {
   test('a search finds the product by its name, and every hit mentions the search term', async ({ guest }) => {
     const res = await guest.products.search('hammer');
