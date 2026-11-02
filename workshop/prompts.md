@@ -41,17 +41,18 @@ Stop after writing the plan and wait for me.
 ## 02 from smoke test to layers (block 4)
 
 ```text
-Follow the layout in AGENTS.md. Turn tests/smoke.spec.ts into the layered structure, without changing what it checks:
-- src/config/env.ts exports credentials(): TOOLSHOP_EMAIL and TOOLSHOP_PASSWORD from environment variables only, failing loudly with a hint when missing, no defaults. The base URL stays in playwright.config.ts.
-- src/api/reply.ts: a small helper that returns { status, body } and does not crash on an empty or non-JSON body.
-- src/api/products.api.ts: a class with a search(q) method. It asserts nothing.
-- src/fixtures/index.ts: export `type Toolshop = { products: ProductsApi }` (later blocks add more clients to this one object) and a `guest` fixture of that type, a client set without a token.
-- Move the check from tests/smoke.spec.ts into tests/products/search.spec.ts, using the fixture; no raw URL in the spec. Delete tests/smoke.spec.ts. The check stays as weak as it is: block 5 strengthens it.
-Run `npm run verify` and `npm test` and show me the real output.
-Do not add features, tests or dependencies beyond this. Stop when both pass.
+Follow the layout in AGENTS.md. Turn tests/smoke.spec.ts into that layout, without changing what it checks:
+- src/config/env.ts: credentials() reads TOOLSHOP_EMAIL and TOOLSHOP_PASSWORD from environment variables only. A missing one fails loudly with a hint, no defaults. The base URL stays in playwright.config.ts.
+- src/api/reply.ts: a helper that returns { status, body } and survives an empty or non-JSON body.
+- src/api/products.api.ts: a class with search(q). It asserts nothing.
+- src/fixtures/index.ts: export `type Toolshop = { products: ProductsApi }` (later blocks add more clients) and a `guest` fixture of that type: a client set without a token.
+- The check moves to tests/products/search.spec.ts through the fixture, with no raw URL. Delete tests/smoke.spec.ts. Keep the check as weak as it is: block 5 strengthens it.
+Run `npm run verify` and `npm test` and show me the real output. No extra features, tests or dependencies. Stop when both pass.
 ```
 
 **Check:** is there still a raw URL in a spec? Does `src/api` contain any `expect`? (It must not.)
+
+Why search, whatever your area? It is the one test you already have, and every area needs the products client in block 5 (a favorite needs a product).
 
 ---
 
