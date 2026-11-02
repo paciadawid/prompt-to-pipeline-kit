@@ -8,7 +8,7 @@
    ```js
    pm.request.headers.upsert({ key: 'Accept', value: 'application/json' });
    ```
-   It runs before every request in the collection. Without it Postman sends `Accept: */*`, and on this host a failed validation then answers with a `302` to an HTML page instead of JSON. You hunt that in block 2.
+   It runs before every request in the collection. Without it Postman sends `Accept: */*`, and on this host a failed validation then answers with a `302` redirect instead of the JSON error (Postman follows it and shows a confusing `404`). You hunt that in block 2.
 4. **First call, no login.** `GET {{baseUrl}}/products/search?q=pliers`. Read the reply: which fields does a product have? Ask Postbot: *"Explain this response. Which fields would a test care about?"*
 5. **Register YOUR user** (once: users cannot be deleted). `POST {{baseUrl}}/users/register`, JSON body:
    ```json
