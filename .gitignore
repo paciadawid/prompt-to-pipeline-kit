@@ -11,3 +11,6 @@ playwright-report
 
 # facilitator material: slides, schedule, answer keys, solution. Local only, never published.
 facilitator/
+
+# your own Postman export (large, may hold your data)
+Toolshop API.postman_collection.json
