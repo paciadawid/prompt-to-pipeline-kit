@@ -88,10 +88,10 @@ Run the tests, show me the real output, and tell me how you know nothing is left
 
 ## 05 your own area (block 5)
 
-Fill in the blank (your area), then paste.
+Replace the part in `<...>` with your letter, then paste.
 
 ```text
-I chose area <A search and paging | B filters and sorting | C favorites edge cases | D login and tokens> from workshop/steps/05-chaining.md.
+I chose area <A, B, C or D> from workshop/steps/05-chaining.md: A search and paging, B filters and sorting, C favorites edge cases, D login and tokens. If I left the letter unchanged, ask me which one before you do anything.
 Read qa/gaps.md and the relevant paths in workshop/toolshop-openapi.3.1.json first. If my area has no row in qa/gaps.md yet, tell me which request to replay before you write anything. Brands come from GET /brands, looked up by name: never hard-code an id.
 Propose three tests for this area as a table (behaviour, which rule each one shows) and wait for my go-ahead. Then implement the one I pick, following AGENTS.md and workshop/rules.md steps 1 to 3:
 - every "nothing happened" check has a positive control,
