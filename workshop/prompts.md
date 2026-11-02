@@ -28,7 +28,7 @@ Copy-paste prompts for your AI agent, one per block. They work in any agent that
 Read AGENTS.md, workshop/rules.md, qa/gaps.md and workshop/toolshop-openapi.3.1.json.
 Do NOT write any code yet.
 
-Fill in qa/test-plan.md. Keep its table columns. Replace the three example rows with 8 to 10 candidate tests (ID, one behaviour that must be true, in one plain sentence, and its source: a spec path or a hunt ID from qa/gaps.md). Use AUTH-01 for "a user logs in and the token identifies them", AUTH-02 for "login is refused for an e-mail that does not exist", FAV-01 for the favorites chain, and number the rest the same way (SEARCH-01, ...).
+Fill in qa/test-plan.md. Keep its table columns. Replace the three example rows with 8 to 10 candidate tests (ID, one behaviour that must be true, in ONE short sentence that checks ONE thing, and its source: a spec path or a hunt ID from qa/gaps.md). Use AUTH-01 for "a user logs in and the token identifies them", AUTH-02 for "login is refused for an e-mail that does not exist", FAV-01 for the favorites chain, and number the rest the same way (SEARCH-01, ...).
 Cover: login and token use, favorites (add, list, remove), products search, and at least one row that pins a gap from qa/gaps.md as a known issue.
 Every row must be traceable to the spec or to qa/gaps.md. If you are unsure about a behaviour, put it under the "Questions" heading of qa/test-plan.md instead of guessing. Leave "Cut list" for me. Do not edit any other file.
 Stop after writing the plan and wait for me.
@@ -59,10 +59,10 @@ Why search, whatever your area? It is the one test you already have, and every a
 ## 03 login and token (block 4)
 
 ```text
-Implement the login row of qa/test-plan.md (AUTH-01, unless my plan uses another ID): a user logs in, gets a bearer token, and the token identifies them. Read that row (ID, behaviour, source) and implement exactly that behaviour, nothing else.
+Implement the login row of qa/test-plan.md (AUTH-01, unless my plan uses another ID): a user logs in, gets a bearer token, and the token identifies them. Use that row for the ID and the title. Implement the checks listed below; if the row asks for more than they cover, tell me what you left out instead of adding it.
 - src/api/users.api.ts: login(email, password), me(), logout(). The class takes an optional token in its constructor and has `withToken(token)` that returns a copy of the client with that token; protected endpoints send it as `Authorization: Bearer <token>`. No assertions in it.
 - src/fixtures/index.ts: add `users: UsersApi` to the `Toolshop` type. Add an `account` fixture that returns credentials() from src/config, and a `shopper` fixture of type Toolshop that logs in as MY user for EACH test, so the token is fresh. If the login does not return 200, throw an error that starts with "precondition:" and says which precondition failed. Never print the password, the token or my e-mail.
-- The login test lives in tests/auth/login.spec.ts and uses the `shopper` fixture: the fixture does the login, the test calls /users/me with that token. It asserts the business result (not just the status): /users/me returns the e-mail we logged in with. The expected value comes from our input (the `account` fixture), not from a reply. Compare the e-mails as true/false, so a failure does not print my e-mail. Name the test so a failure says which fact broke; the true/false e-mail comparison gets a message, because "expected true, received false" says nothing.
+- The login test lives in tests/auth/login.spec.ts and uses the `shopper` fixture: the fixture does the login, the test calls /users/me with that token. It asserts the business result (not just the status): /users/me returns the e-mail we logged in with. The expected value comes from our input (the `account` fixture), not from a reply. Compare the e-mails case-insensitively, as true/false, so a failure does not print my e-mail. Name the test so a failure says which fact broke; the true/false e-mail comparison gets a message, because "expected true, received false" says nothing.
 Run `npm run verify` and `npm test` and show me the real output (a type error does not fail `npm test`). Stop after this one test.
 ```
 
