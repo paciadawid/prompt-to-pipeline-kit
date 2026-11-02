@@ -6,10 +6,13 @@
 
 **Part 2: hunt the hallucination (12 min).** Open `workshop/hallucination-hunt/README.md`. An AI wrote `flawed.spec.ts`. Find the flaws by reading it (do not run it). Compare with your neighbour.
 
-**Part 3: your own pick (15 min).** Choose ONE area (the one you explored in block 2 is an easy start) and cover it with the agent (**prompt 05**), using rules step 2:
+**Part 3: your own pick (15 min).** Choose ONE area (the one you explored in block 2 is an easy start) and cover it with the agent (**prompt 05**), using rules steps 2 and 3:
 - **A. Search and paging:** search finds what it should, no hits is an empty list, pages do not overlap.
 - **B. Filters and sorting:** filtering by brand returns only that brand, sorting by price really sorts, an unknown brand id, a nonsense sort key (that is hunt H7: check what the server really does). Look brands up by name from `GET /brands`.
-- **C. Favorites edge cases (the only pick that needs your login):** the same product twice, favorites without a token, a favorite that does not exist.
+- **C. Favorites edge cases (needs your login):** the same product twice, favorites without a token, a favorite that does not exist.
+- **D. Login and tokens (needs your login):** login is refused for an e-mail that does not exist (with a positive control: the real login still works), a token is dead after logout, the old token is dead after a refresh (hunts H1 and H4). Never send a wrong password for your own user.
+
+Explored carts in block 2? Carts is the challenge in block 7, so pick A to D now: your cart rows are the input for the challenge.
 
 The agent proposes three tests; you build **one**. Done early? Build a second. The rest is homework.
 
@@ -31,6 +34,6 @@ The push starts the run on GitHub; it finishes while you get coffee. It reads th
 - nothing is left behind. Check your favorites list in Postman: send the login request again first (the token from block 1 expired long ago), then `GET /favorites`;
 - your pipeline is pushed (or you know why not yet).
 
-Areas A and B only read, so for them the cleanup is "none". The rest of your test plan is homework.
+Areas A and B only read, so for them the cleanup is "none". In D each test logs in itself and logs out at the end. The rest of your test plan is homework.
 
-**Stuck?** `workshop/checkpoints/05-chaining/` has the chain and one example for each area. Save your work, then `rm -rf src tests && cp -R workshop/checkpoints/05-chaining/. .` (see `workshop/checkpoints/README.md`).
+**Stuck?** `workshop/checkpoints/05-chaining/` has the chain and one example for each area (login tests are the D example). Save your work, then `rm -rf src tests && cp -R workshop/checkpoints/05-chaining/. .` (see `workshop/checkpoints/README.md`).

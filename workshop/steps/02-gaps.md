@@ -2,7 +2,7 @@
 
 **Goal:** find where the spec and the live server disagree, and write each difference down with proof.
 
-A spec is a claim. A *gap* is a claim you disproved with a request. Work in pairs, send real requests from Postman, and **pick one area**: do its hunts, then try whatever looks odd. Any area, any partner: several pairs can take the same one. Not every hunt finds a gap: three proven rows are enough. (Want to test search, filters or favorites in block 5? Take that area: you will know it best.)
+A spec is a claim. A *gap* is a claim you disproved with a request. Work in pairs, send real requests from Postman, and **pick one area**: do its hunts, then try whatever looks odd. Any area, any partner: several pairs can take the same one. Not every hunt finds a gap: three proven rows are enough. (Want to test search, filters, favorites or login in block 5? Take that area: you will know it best. Carts is the challenge in block 7.)
 
 | Area | Hunt | Try this | Ask yourself |
 |---|---|---|---|

@@ -73,7 +73,7 @@ Run `npm run verify` and `npm test` and show me the real output (a type error do
 ## 04 a chain with cleanup (block 5)
 
 ```text
-Implement the favorites chain from qa/test-plan.md: look up a product by its exact name, add it as a favorite, find it in the list, remove it, and prove it is gone.
+Implement the favorites chain row of qa/test-plan.md (FAV-01, unless my plan uses another ID): look up a product by its exact name, add it as a favorite, find it in the list, remove it, and prove it is gone.
 - src/domain/catalog.ts: productNamed(products, name), where `products` is the ProductsApi client, looks a product up by exact name through search. Product ids change whenever the public shop resets its data, so never hard-code an id. Search can return several hits for one term: pick the exact match and throw a clear error when none is found.
 - src/api/favorites.api.ts: list(), add(productId), remove(id), get(id). No assertions in it. Add `favorites: FavoritesApi` to the `Toolshop` type.
 - The `shopper` fixture records the favorite ids that add() returns and removes exactly those in teardown (it runs even when the test fails). Check the status of each delete (204, or 404 when the test removed it already) and throw if one failed. Do not delete "all" favorites and do not compare list sizes: other tests share the user, so compare ids.
@@ -91,12 +91,13 @@ Run the tests, show me the real output, and tell me how you know nothing is left
 Fill in the blank (your area), then paste.
 
 ```text
-I chose area <A search and paging | B filters and sorting | C favorites edge cases> from workshop/steps/05-chaining.md.
+I chose area <A search and paging | B filters and sorting | C favorites edge cases | D login and tokens> from workshop/steps/05-chaining.md.
 Read qa/gaps.md and the relevant paths in workshop/toolshop-openapi.3.1.json first. If my area has no row in qa/gaps.md yet, tell me which request to replay before you write anything. Brands come from GET /brands, looked up by name: never hard-code an id.
-Propose three tests for this area as a table (behaviour, which rule each one shows) and wait for my go-ahead. Then implement the one I pick, following AGENTS.md and workshop/rules.md steps 1 and 2:
+Propose three tests for this area as a table (behaviour, which rule each one shows) and wait for my go-ahead. Then implement the one I pick, following AGENTS.md and workshop/rules.md steps 1 to 3:
 - every "nothing happened" check has a positive control,
 - every state change is read back after the call,
-- each test creates and cleans up its own data (areas A and B only read: write "cleanup: none, read-only" instead),
+- each test creates and cleans up its own data (areas A and B only read: write "cleanup: none, read-only" instead; in D never send a wrong password for my user, use an e-mail that does not exist),
+- a bug that qa/gaps.md shows is pinned on purpose with @known-issue, not hidden,
 - a failure says which business fact broke (a clear test title; a message only on true/false checks).
 Run it and show me the real output. Then stop: I ask for a second test only if I have time.
 ```
