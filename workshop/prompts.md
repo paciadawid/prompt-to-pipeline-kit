@@ -61,7 +61,7 @@ Do not add features, tests or dependencies beyond this. Stop when both pass.
 Implement AUTH-01 from qa/test-plan.md: a user logs in, gets a bearer token, and the token identifies them.
 - src/api/users.api.ts: login(email, password), me(), logout(). The class takes an optional token in its constructor and has `withToken(token)` that returns a copy of the client with that token; protected endpoints send it as `Authorization: Bearer <token>`. No assertions in it.
 - src/fixtures/index.ts: add `users: UsersApi` to the `Toolshop` type. Add an `account` fixture that returns credentials() from src/config, and a `shopper` fixture of type Toolshop that logs in as MY user for EACH test, so the token is fresh. If the login does not return 200, throw an error that starts with "precondition:" and says which precondition failed. Never print the password, the token or my e-mail.
-- AUTH-01 lives in tests/auth/login.spec.ts and uses the `shopper` fixture: the fixture does the login, the test calls /users/me with that token. It asserts the business result (not just the status): /users/me returns the e-mail we logged in with. The expected value comes from our input (the `account` fixture), not from a reply. Compare the e-mails as true/false, so a failure does not print my e-mail. Every assertion has a message saying which fact failed.
+- AUTH-01 lives in tests/auth/login.spec.ts and uses the `shopper` fixture: the fixture does the login, the test calls /users/me with that token. It asserts the business result (not just the status): /users/me returns the e-mail we logged in with. The expected value comes from our input (the `account` fixture), not from a reply. Compare the e-mails as true/false, so a failure does not print my e-mail. Name the test so a failure says which fact broke; the true/false e-mail comparison gets a message, because "expected true, received false" says nothing.
 Run `npm run verify` and `npm test` and show me the real output (a type error does not fail `npm test`). Stop after AUTH-01.
 ```
 
@@ -96,7 +96,7 @@ Propose three tests for this area as a table (behaviour, which rule each one sho
 - every "nothing happened" check has a positive control,
 - every state change is read back after the call,
 - each test creates and cleans up its own data (areas A and B only read: write "cleanup: none, read-only" instead),
-- every assertion message names the business fact.
+- a failure says which business fact broke (a clear test title; a message only on true/false checks).
 Run it and show me the real output. Then stop: I ask for a second test only if I have time.
 ```
 

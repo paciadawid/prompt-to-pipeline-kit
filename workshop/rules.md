@@ -5,7 +5,7 @@ A green test that cannot fail is worse than no test. You get the rules in three 
 ## Step 1: say what you check (from block 4)
 1. **Assert the business result, not just the status.** A failure is often HTTP 200 with an error inside, so `expect(status).toBe(200)` alone proves little.
 2. **Compute expected values from your INPUT.** The email you sent, `3 * unitPrice`: never a value copied from the reply (that tests the server against itself).
-3. **Messages say which business fact failed.** `expect(hits, 'search for "pliers" finds Combination Pliers').toContain(...)`.
+3. **A failure says which business fact broke.** A clear test title and named values are enough: `expect(hits).toContain('Combination Pliers')` prints both sides. Add a message when the failure would only say "expected true, received false".
 
 ## Step 2: prove the test can see (from block 5)
 4. **Prove preconditions.** "Nothing there" only means something if you saw something a moment earlier.

@@ -11,7 +11,7 @@ Two words you will meet:
 3. **Review it with the checklist** (rules step 1):
    - Does it check the business result, not only the status?
    - Does the expected value come from your input?
-   - Does every message say which fact failed?
+   - Would a failure say which fact broke? (A clear test title is enough; a `true`/`false` check needs a message.)
 
    Fix the one thing you like least by hand, without the agent.
 4. **Can it fail?** Break two things, one at a time, and put each one back:

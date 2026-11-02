@@ -55,7 +55,7 @@ export const test = base.extend<TestFixtures>({
   shopper: async ({ request, account }, use) => {
     const login = await new UsersApi(request).login(account.email, account.password);
     if (login.status !== 200) {
-      throw new Error(`precondition: login of the shopper failed: HTTP ${login.status}${login.status === 423 ? " (account locked: register a new user with a new nick)" : ""}`);
+      throw new Error(`precondition: login of the shopper failed: HTTP ${login.status}${login.status === 423 ? " (account locked: register a new user with a new name)" : ""}`);
     }
     const { toolshop, favorites } = client(request, login.body.access_token);
     await use(toolshop);

@@ -14,8 +14,8 @@
    ```json
    {
      "first_name": "Ada",
-     "last_name": "<your nick>",
-     "email": "twz26-<nick>-<4 random characters>@example.com",
+     "last_name": "<your first name>",
+     "email": "twz26-<your first name>-<4 random characters>@example.com",
      "password": "<8+ characters: upper case, lower case, digit, symbol>"
    }
    ```
@@ -28,6 +28,6 @@
 
 **Done when:** `/users/me` returns your e-mail, your environment holds `email`, `password` and `token`, and `qa/notes.md` has five lines.
 
-**Careful:** a few failed logins in a row lock your account for good (HTTP `423`). Check the password in your environment before you retry. A locked user cannot be saved: register a new one with a new nick.
+**Careful:** a few failed logins in a row lock your account for good (HTTP `423`). Check the password in your environment before you retry. A locked user cannot be saved: register a new one with a new name.
 
 **Stuck?** `npm run user:create` registers a user for you and writes `.env`. Open `.env` yourself and copy the e-mail and password into your Postman environment (your own file: fine; into an AI chat: never).

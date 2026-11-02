@@ -16,8 +16,7 @@
    Ask: `Read AGENTS.md and workshop/rules.md and tell me in three lines what this repo is for and what you must never do. Change nothing.`
    Most agents read `AGENTS.md` on their own. If yours does not, start every new chat with `Read AGENTS.md first.`
 5. Postman is installed and you are signed in (a free account is fine).
-6. Choose a short nick (letters and digits). It goes into your test user's e-mail, so the owner of the host can tell whose user it is.
-7. Skim `README.md` in the kit: it says where each block lives.
+6. Skim `README.md` in the kit: it says where each block lives.
 
 **What you should see:** preflight prints a `PASS` line for Node, dependencies, type check and "Toolshop reachable", one `TODO` line for your user (that comes in block 1, nothing to fix now), then `Pre-flight OK`. A `FAIL` line says what is missing.
 
