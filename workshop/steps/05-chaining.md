@@ -16,7 +16,7 @@ Explored carts in block 2? Carts is the challenge in block 7, so pick A to D now
 
 The agent proposes three tests; you build **one**. Done early? Build a second. The rest is homework.
 
-**Part 4: before coffee, start your pipeline (3 min).** Only when `npm test` is green; if it is not, skip this and do it in block 6. Started from the ZIP? Skip it too: block 6 shows you how.
+**Part 4: before coffee, start your pipeline (5 min).** Only when `npm test` is green; if it is not, skip this and do it in block 6. Started from the ZIP? Skip it too: block 6 shows you how.
 
 First give GitHub your login. The pipeline has no `.env`: it reads your e-mail and password from **secrets** (values GitHub hides and hands to the run). On GitHub: your repo → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**. Add `TOOLSHOP_EMAIL` and `TOOLSHOP_PASSWORD`. Type them in the browser; do not paste them anywhere else. Without them the first run is red.
 ```bash

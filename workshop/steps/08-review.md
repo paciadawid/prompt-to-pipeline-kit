@@ -8,6 +8,6 @@
    - A break nobody notices is a gap: write down the test that would have caught it.
    - A broken fixture can leave a favorite behind. If your next run stops at "not a favorite yet", log in again in Postman and remove it (`DELETE /favorites/<id>`).
 3. **Ask for a review (5 min).** Run prompt 08, then judge it: open three findings. Are they real? Which of your breaks would the review **not** have found?
-4. **Take home (3 min).** `AGENTS.md` and `workshop/rules.md` are the parts you reuse on Monday. Which three facts about YOUR own API would you write into an `AGENTS.md`?
+4. **Take home.** `AGENTS.md` and `workshop/rules.md` are the parts you reuse on Monday. Which three facts about YOUR own API would you write into an `AGENTS.md`?
 
 **Done when:** every break turned something red, or you wrote down the test that would make it so.
