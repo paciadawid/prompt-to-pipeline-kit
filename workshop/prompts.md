@@ -135,10 +135,11 @@ Make the smallest change that fixes this one cause. Explain the diff in two sent
 
 ```text
 We are testing a new API: <name and base URL>. Read nothing but its public documentation at <docs URL> (for the Toolshop cart: the spec in workshop/toolshop-openapi.3.1.json; the cart needs no login).
+AGENTS.md describes the Toolshop: its rules apply to this API too, its host facts do not.
 Do not write tests yet. First:
 1. List the endpoints that matter for <the feature I chose> and what each returns (only things you can show me from the docs or from a request).
 2. Send the requests yourself (or give me curl commands to send) and report what the server REALLY does: statuses, bodies, anything the docs do not say.
-3. Write what you learned into qa/<api>-gaps.md as a table (one file per API).
+3. Write what you learned into a gaps table: qa/pokeapi-gaps.md for Pokémon, qa/gaps.md for the Toolshop cart (same host as before).
 4. Propose six tests as a table: behaviour, the rule it shows, its source (docs section, spec path or the request you replayed), and how cleanup will work.
 Stop and wait for me after step 4. Then I will say which test to write first.
 ```

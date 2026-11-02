@@ -14,7 +14,7 @@ If you finish early: do the other tier, or bring a public API from your own work
 ## The rules of the challenge
 1. You may use any AI help and the prompts in `workshop/prompts.md` (start with prompt 07).
 2. Nothing counts that you have not run. Show real output.
-3. Same layout as the rest of your project: a new `src/api/<name>.api.ts` and a new `tests/<name>/` (for example `tests/pokeapi/`, `tests/cart/`). A second host is easiest as a second **Playwright project**: a named group of tests with its own settings, such as its own `baseURL` (see the hints). Keep one gaps file per API: `qa/pokeapi-gaps.md`, `qa/cart-gaps.md`.
+3. Same layout as the rest of your project: a new `src/api/<name>.api.ts` and a new `tests/<name>/` (for example `tests/pokeapi/`, `tests/cart/`). A second host is easiest as a second **Playwright project**: a named group of tests with its own settings, such as its own `baseURL` (see the hints). Gaps go in one file per API: `qa/pokeapi-gaps.md` for Pokémon. The cart is the Toolshop you already know, so its rows go into `qa/gaps.md` (your block 2 cart rows are the start).
 4. Cleanup: anything you create, you remove in a fixture, and the fixture checks that the removal worked.
 5. Time box: about 50 minutes. 10 explore, 10 plan, 20 code, 10 break and score. **One tier, three or four tests.** Tier A is quicker; start there if this is your first API. More time? Add tests, or take the other tier.
 

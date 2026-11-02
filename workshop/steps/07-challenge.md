@@ -6,7 +6,7 @@ Read `workshop/challenge.md`, pick **one tier**, and go. The order is yours to k
 
 | Minutes | What | Output |
 |---|---|---|
-| 10 | Explore: prompt 07 (steps 1 to 3), or by hand in Postman | `qa/<api>-gaps.md` with evidence |
+| 10 | Explore: prompt 07 (steps 1 to 3), or by hand in Postman | gaps with evidence: `qa/pokeapi-gaps.md`, or `qa/gaps.md` for the cart |
 | 10 | Plan: four to six tests with sources, written **before** code | `qa/test-plan.md` (a new section) |
 | 20 | Code: three or four tests, one at a time, cleanup in a fixture | green tests |
 | 10 | Break one thing nobody should notice, then score yourself (the 10-point list in `challenge.md`) | your score |
