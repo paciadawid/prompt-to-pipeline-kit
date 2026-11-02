@@ -6,7 +6,7 @@
 
 **Part 2: hunt the hallucination (12 min).** Open `workshop/hallucination-hunt/README.md`. An AI wrote `flawed.spec.ts`. Find the flaws by reading it (do not run it). Compare with your neighbour.
 
-**Part 3: your own pick (15 min).** Choose ONE area and cover it with the agent (**prompt 05**), using rules step 2:
+**Part 3: your own pick (15 min).** Choose ONE area (the one you explored in block 2 is an easy start) and cover it with the agent (**prompt 05**), using rules step 2:
 - **A. Search and paging:** search finds what it should, no hits is an empty list, pages do not overlap.
 - **B. Filters and sorting:** filtering by brand returns only that brand, sorting by price really sorts, an unknown brand id, a nonsense sort key (that is hunt H7: check what the server really does). Look brands up by name from `GET /brands`.
 - **C. Favorites edge cases (the only pick that needs your login):** the same product twice, favorites without a token, a favorite that does not exist.
