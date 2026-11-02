@@ -28,7 +28,7 @@ Copy-paste prompts for your AI agent, one per block. They work in any agent that
 Read AGENTS.md, workshop/rules.md, qa/gaps.md and workshop/toolshop-openapi.3.1.json.
 Do NOT write any code yet.
 
-Fill in qa/test-plan.md. Keep its table columns. Replace the three example rows with 8 to 10 candidate tests (ID, behaviour that must hold, needs login, which rules it must show, source: a spec path or a hunt ID from qa/gaps.md). Use AUTH-01 for "a user logs in and the token identifies them", AUTH-02 for "login is refused for an e-mail that does not exist", FAV-01 for the favorites chain, and number the rest the same way (SEARCH-01, ...).
+Fill in qa/test-plan.md. Keep its table columns. Replace the three example rows with 8 to 10 candidate tests (ID, one behaviour that must be true, in one plain sentence, and its source: a spec path or a hunt ID from qa/gaps.md). Use AUTH-01 for "a user logs in and the token identifies them", AUTH-02 for "login is refused for an e-mail that does not exist", FAV-01 for the favorites chain, and number the rest the same way (SEARCH-01, ...).
 Cover: login and token use, favorites (add, list, remove), products search, and at least one row that pins a gap from qa/gaps.md as a known issue.
 Every row must be traceable to the spec or to qa/gaps.md. If you are unsure about a behaviour, put it under the "Questions" heading of qa/test-plan.md instead of guessing. Leave "Cut list" for me. Do not edit any other file.
 Stop after writing the plan and wait for me.

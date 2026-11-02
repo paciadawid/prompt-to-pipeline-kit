@@ -13,7 +13,9 @@
 
 The agent proposes three tests; you build **one**. Done early? Build a second. The rest is homework.
 
-**Part 4: before coffee, start your pipeline (2 min).** Only when `npm test` is green; if it is not, skip this and do it in block 6. Started from the ZIP? Skip it too: block 6 shows you how.
+**Part 4: before coffee, start your pipeline (3 min).** Only when `npm test` is green; if it is not, skip this and do it in block 6. Started from the ZIP? Skip it too: block 6 shows you how.
+
+First give GitHub your login. The pipeline has no `.env`: it reads your e-mail and password from **secrets** (values GitHub hides and hands to the run). On GitHub: your repo → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**. Add `TOOLSHOP_EMAIL` and `TOOLSHOP_PASSWORD`. Type them in the browser; do not paste them anywhere else. Without them the first run is red.
 ```bash
 git status        # .env must not be listed
 mkdir -p .github/workflows
@@ -21,7 +23,7 @@ cp workshop/pipeline.yml .github/workflows/api-tests.yml
 git add . && git commit -m "Tests and pipeline"
 git push
 ```
-The push starts the run on GitHub; it finishes while you get coffee. It reads the two secrets from block 3 (card 03, step 2): add them first if you skipped that.
+The push starts the run on GitHub; it finishes while you get coffee. It reads the two secrets you just added.
 
 **Done when:**
 - the chain test and one test from your pick are green;

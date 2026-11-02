@@ -7,9 +7,8 @@
 3. **Gate: you decide.** Cut the plan to six to eight rows. Every row must come from the spec or from a gap. Keep at least one login row and one row that pins a bug on purpose. Delete anything you cannot explain, and write what you cut under "Cut list" in the same file.
 4. **Your user into the project.** Copy `.env.example` to `.env` and fill `TOOLSHOP_EMAIL` and `TOOLSHOP_PASSWORD` from your Postman environment. Type or copy them yourself: **never** paste them into an AI chat. `git status` must not list `.env`.
    (A spare user is cheap insurance: `npm run user:create` registers one with a new name. Keep it for when yours gets locked.)
-5. **The same two values for the pipeline, for later.** There is no pipeline yet. In block 5 you push one, and it reads your login from GitHub **secrets** (values GitHub hides and hands to the pipeline). Add them now so the first run is not red: your repo → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**: `TOOLSHOP_EMAIL` and `TOOLSHOP_PASSWORD`. Type them in the browser; do not paste them anywhere else. (Started from the ZIP? You have no GitHub repository yet: do this in block 6.)
 
-**Done when:** `AGENTS.md` has your facts, `qa/test-plan.md` is a plan you would defend, `.env` works (and nobody else has seen it), and both secrets are on GitHub.
+**Done when:** `AGENTS.md` has your facts, `qa/test-plan.md` is a plan you would defend, and `.env` works (and nobody else has seen it).
 
 The next blocks build only part of the plan: AUTH-01, the favorites chain and one test of your own choice. The rest is homework.
 
