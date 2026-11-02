@@ -8,7 +8,7 @@ A spec is a claim. A *gap* is a claim you disproved with a request. Work in pair
 |---|---|---|
 | H1 | Log in with an e-mail that **does not exist** (any password) | Which status and body? Does the spec list that answer at all? Never try a wrong password for your own user: a few failures lock it (HTTP 423). |
 | H2 | Add a product to favorites. Add the same one again. Then delete that favorite twice. | Which status does the spec promise for each call, and which do you get? |
-| H3 | Send a request that fails validation (for example set a cart quantity to 0), once with the header `Accept: application/json` and once without | Does the answer change shape? Why would that matter for a test? |
+| H3 | Create a cart (`POST /carts`). Then **Add item to cart** with a real `product_id` (from your search) and `quantity` `0`. Send it once with the header `Accept: application/json` (your collection script adds it) and once without: put `//` in front of the script line, **Save**, send again, then take the `//` away. | Does the answer change shape? Why would that matter for a test? |
 | H4 | Log out, then use the same token on `/users/me`. Then refresh a token and use the OLD one | Is a token really dead after logout and after refresh? |
 | H5 | Carts (no login needed): add 99 of a product, then 1 more. Set the quantity of a product that is not in the cart | Does the server keep its own limit? Does "success" mean something happened? |
 | H6 | Search `Claw Hammer` | How many hits? What does that mean for a test that looks a product up by name? |
