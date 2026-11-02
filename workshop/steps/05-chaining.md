@@ -2,7 +2,7 @@
 
 **Goal:** tests that follow a chain (product → favorite → list → remove) and clean up after themselves, plus a test you choose yourself.
 
-**Part 1: the chain (20 min).** Read **prompt 04** (`workshop/prompts.md`) before you paste it: where are the precondition, the side effect and the cleanup? Then run it. It builds the favorites client and a test of the whole chain. Read the fixture: where does the cleanup run, and why is it not at the end of the test body?
+**Part 1: the chain (20 min).** Read **prompt 04** (`workshop/prompts.md`) before you paste it: where are the precondition, the side effect and the cleanup? Then run it. It builds the favorites client and a test of the whole chain. Read the fixture: where does the cleanup run, and why is it not the last line of the test? (If an `expect` fails halfway, the test stops and that last line never runs. The fixture's teardown still does.)
 
 **Part 2: hunt the hallucination (12 min).** Open `workshop/hallucination-hunt/README.md`. An AI wrote `flawed.spec.ts`. Find the flaws by reading it (do not run it). Compare with your neighbour.
 
