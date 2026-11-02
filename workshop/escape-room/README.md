@@ -9,7 +9,7 @@ How:
 4. Prove the diagnosis on your laptop if you can (unset a variable, run the same command).
 5. Make the smallest fix, push, read the next failure.
 
-Green is not the end. Ask one more question: **when a test fails, does the report still arrive?** A pipeline that hides its evidence on a red run is broken too.
+Green is not the end. Ask one more question: **when a test fails, does the report still arrive?** A pipeline that hides its evidence on a red run is broken too. Prove it: change one expected value in the search test so it fails, push, look for the report, then revert.
 
 Rules of the room:
 - Do not look at the answer key and do not diff against `workshop/pipeline.yml`: that is copying, not diagnosing.
