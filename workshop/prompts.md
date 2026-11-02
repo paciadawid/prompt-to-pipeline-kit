@@ -34,7 +34,7 @@ Every row must be traceable to the spec or to qa/gaps.md. If you are unsure abou
 Stop after writing the plan and wait for me.
 ```
 
-**Check:** can you find the source of every row? Delete the rows you cannot defend. This is the gate: the agent proposes, you decide.
+**Check:** can you find the source of every row? Delete the rows you cannot defend. The agent proposes, you decide: nothing gets coded that you did not approve.
 
 ---
 
