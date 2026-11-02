@@ -58,11 +58,11 @@ Do not add features, tests or dependencies beyond this. Stop when both pass.
 ## 03 login and token (block 4)
 
 ```text
-Implement AUTH-01 from qa/test-plan.md: a user logs in, gets a bearer token, and the token identifies them.
+Implement the login row of qa/test-plan.md (AUTH-01, unless my plan uses another ID): a user logs in, gets a bearer token, and the token identifies them. Read that row (ID, behaviour, source) and implement exactly that behaviour, nothing else.
 - src/api/users.api.ts: login(email, password), me(), logout(). The class takes an optional token in its constructor and has `withToken(token)` that returns a copy of the client with that token; protected endpoints send it as `Authorization: Bearer <token>`. No assertions in it.
 - src/fixtures/index.ts: add `users: UsersApi` to the `Toolshop` type. Add an `account` fixture that returns credentials() from src/config, and a `shopper` fixture of type Toolshop that logs in as MY user for EACH test, so the token is fresh. If the login does not return 200, throw an error that starts with "precondition:" and says which precondition failed. Never print the password, the token or my e-mail.
-- AUTH-01 lives in tests/auth/login.spec.ts and uses the `shopper` fixture: the fixture does the login, the test calls /users/me with that token. It asserts the business result (not just the status): /users/me returns the e-mail we logged in with. The expected value comes from our input (the `account` fixture), not from a reply. Compare the e-mails as true/false, so a failure does not print my e-mail. Name the test so a failure says which fact broke; the true/false e-mail comparison gets a message, because "expected true, received false" says nothing.
-Run `npm run verify` and `npm test` and show me the real output (a type error does not fail `npm test`). Stop after AUTH-01.
+- The login test lives in tests/auth/login.spec.ts and uses the `shopper` fixture: the fixture does the login, the test calls /users/me with that token. It asserts the business result (not just the status): /users/me returns the e-mail we logged in with. The expected value comes from our input (the `account` fixture), not from a reply. Compare the e-mails as true/false, so a failure does not print my e-mail. Name the test so a failure says which fact broke; the true/false e-mail comparison gets a message, because "expected true, received false" says nothing.
+Run `npm run verify` and `npm test` and show me the real output (a type error does not fail `npm test`). Stop after this one test.
 ```
 
 **Check (rules step 1):** which assertion would still pass if `/users/me` returned someone else's data? (Hint: any check that only looks at the status or at the shape, or that compares with a value taken from a reply.) If you find one, fix it by hand.
