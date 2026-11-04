@@ -6,6 +6,7 @@ if (existsSync('.env')) process.loadEnvFile('.env');
 
 export default defineConfig({
   testDir: './tests',
+  globalSetup: './src/fixtures/global-setup.ts', // makes sure my user exists before any test logs in
   reporter: [['list'], ['html', { open: 'never' }]],
   workers: 2, // a public host shared by the whole room: stay modest
   retries: 0, // a retry hides flakiness and doubles traffic
